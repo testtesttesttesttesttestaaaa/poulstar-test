@@ -24,11 +24,16 @@ jobs:
         run: |
           cd poulstar
           poetry build
-
+      - name: Archive output content
+        uses: thedoctor0/zip-release@master
+        with:
+          filename: output.zip
+          directory: poulstar/dist/
+          
       - uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.os }}-${{ matrix.architecture }}
-          path: poulstar/dist/*.whl
+          path: poulstar/dist/*.zip
 
   ubuntu:
     strategy:
@@ -53,11 +58,17 @@ jobs:
         run: |
           cd poulstar
           poetry build
-
+          
+      - name: Archive output content
+        uses: thedoctor0/zip-release@master
+        with:
+          filename: output.zip
+          directory: poulstar/dist/
+          
       - uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.os }}-${{ matrix.architecture }}
-          path: poulstar/dist/*.whl
+          path: poulstar/dist/*.zip
 
   mac:
     strategy:
@@ -83,10 +94,16 @@ jobs:
           cd poulstar
           poetry build
 
+      - name: Archive output content
+        uses: thedoctor0/zip-release@master
+        with:
+          filename: output.zip
+          directory: poulstar/dist/
+          
       - uses: actions/upload-artifact@v3
         with:
           name: ${{ matrix.os }}-${{ matrix.architecture }}
-          path: poulstar/dist/*.whl
+          path: poulstar/dist/*.zip
 
   distribute-project:
     name: Distribute project to GitHub Releases
