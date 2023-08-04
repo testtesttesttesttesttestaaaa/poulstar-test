@@ -16,7 +16,12 @@ jobs:
       - name: Install toml
         run: |
           pip install toml
-      
+      - name: Show Dir
+        run: |
+          ls -R
+      - name: Show Dir
+        run: |
+          pwd
       - name: Check pypi versions
         id: versioncheck
         run: python .github/workflows/version.py
