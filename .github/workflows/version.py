@@ -1,7 +1,7 @@
 import toml
 
 def get_version():
-  data=toml.load("./poulstar/pyproject.toml")
+  data=toml.load("../../poulstar/pyproject.toml")
   version = data["tool"]["poetry"]["version"]
   return version
 
