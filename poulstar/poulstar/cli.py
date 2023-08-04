@@ -46,8 +46,8 @@ def logo(
     # """
     # )
     merge.merge_images(
-        background_path="./1.png",
-        overlay_path="./logo.png",
+        background_path="1.png",
+        overlay_path="logo.png",
         output_path="output.png",
         position="lt",
     )
