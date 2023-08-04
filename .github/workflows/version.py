@@ -6,5 +6,7 @@ def get_version():
   return version
 
 if __name__ == '__main__':
-  get_version()
+  version = get_version()
+  with open(os.environ['GITHUB_OUTPUT'], 'at') as f:
+    f.write(f"version={version}")
   
