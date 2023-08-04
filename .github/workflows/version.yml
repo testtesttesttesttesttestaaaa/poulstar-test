@@ -9,15 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.10' 
+      
+      - name: Install Poetry
+        run: |
+          pip install poetry
       
       - name: Check pypi versions
-        uses: maybe-hello-world/pyproject-check-version@v3
         id: versioncheck
-        with:
-          pyproject-path: "./poulstar/pyproject.toml"    # default value
+        run: python .github/workflows/example.py
+        
       
       - name: check output
         run: |
-            echo "Output: ${{ steps.versioncheck.outputs.local_version_is_higher }}"  # 'true' or 'false
-            echo "Local version: ${{ steps.versioncheck.outputs.local_version }}"     # e.g., 0.1.1
-            echo "Public version: ${{ steps.versioncheck.outputs.public_version }}"   # e.g., 0.1.0
+            echo "Version: ${{ steps.versioncheck.outputs.version }}"
