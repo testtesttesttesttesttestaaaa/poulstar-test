@@ -19,7 +19,7 @@ jobs:
       
       - name: Check pypi versions
         id: versioncheck
-        run: python .github/workflows/example.py
+        run: python .github/workflows/version.py
         
       
       - name: check output
